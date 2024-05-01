@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>In the Dugout</title>
+  </head>
+  <body style="text-align: center">
+    <h1>In the Dugout</h1>
+    <h2>Manager - Daryl Lockwood</h2>
+    <h3>Assistant Manager - Elliott Turner</h3>
+    <button id="pair" onclick="pair()">Generate Staff</button><br />
+    <button id="reset" onclick="reset()">Reset</button><br />
+
+    <ul id="staff" style="list-style-type: none"></ul>
+
+    <footer>
+      <p>
+        <a href="https://github.com/egturner89" target="_blank">egturner89</a>
+      </p>
+      <p>York, England | May 2024</p>
+    </footer>
+
+    <script>
+      let staff = [
+        "First Team Coach",
+        "Fitness Coach",
+        "Goalkeeping Coach",
+        "Physio",
+        "Kit Man",
+      ];
+      let friends = [
+        "Brendan Myers",
+        "Thomas Priestley",
+        "Trevor Warth",
+        "Stephan Andre",
+        "Joe Schewtschuk",
+      ];
+
+      function pair() {
+        let pairings = document.getElementById("staff");
+        pairings.innerHTML = ""; // Clear any existing pairings
+
+        while (staff.length > 0) {
+          let staffIndex = Math.floor(Math.random() * staff.length);
+          let friendIndex = Math.floor(Math.random() * friends.length);
+          let staffMember = staff[staffIndex];
+          let friend = friends[friendIndex];
+          staff.splice(staffIndex, 1);
+          friends.splice(friendIndex, 1);
+          let li = document.createElement("li");
+          li.textContent = staffMember + ": " + friend;
+          pairings.appendChild(li);
+        }
+      }
+
+      function reset() {
+        staff = [
+          "First Team Coach",
+          "Fitness Coach",
+          "Goalkeeping Coach",
+          "Physio",
+          "Kit Man",
+        ];
+        friends = [
+          "Brendan Myers",
+          "Thomas Priestley",
+          "Trevor Warth",
+          "Stephan Andre",
+          "Joe Schewtschuk",
+        ];
+        document.getElementById("staff").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
